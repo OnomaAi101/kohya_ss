@@ -325,6 +325,8 @@ gui.sh --listen 127.0.0.1 --server_port 7860 --inbrowser --share
 
 For specific instructions on using the Dreambooth solution, please refer to the [Dreambooth README](https://github.com/bmaltais/kohya_ss/blob/master/train_db_README.md).
 
+export CUDA_VISIBLE_DEVICES=2 && accelerate launch --num_cpu_threads_per_process=2 "./train_db.py" --enable_bucket --min_bucket_reso=256 --max_bucket_reso=2048 --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" --train_data_dir="/data7/OnomaAi101/CAT/data/textual_inversion/cat_statue" --resolution="512,512" --output_dir="/data7/OnomaAi101/CAT/results/dreembooth/cat_statue_20240205" --logging_dir="/data7/OnomaAi101/CAT/results/dreembooth/cat_statue_20240205" --save_model_as=safetensors --output_name="last" --lr_scheduler_num_cycles="1" --max_data_loader_n_workers="0" --learning_rate_te="1e-05" --learning_rate="1e-05" --lr_scheduler="cosine" --lr_warmup_steps="4" --train_batch_size="1" --max_train_steps="36" --save_every_n_epochs="1" --mixed_precision="fp16" --save_precision="fp16" --cache_latents --optimizer_type="AdamW8bit" --max_data_loader_n_workers="0" --bucket_reso_steps=64 --xformers --bucket_no_upscale --noise_offset=0.0 --caption_extension .txt
+
 ## Finetune
 
 For specific instructions on using the Finetune solution, please refer to the [Finetune README](https://github.com/bmaltais/kohya_ss/blob/master/fine_tune_README.md).
